@@ -1,0 +1,30 @@
+---
+- name: Setup Docker and deploy
+
+  hosts: current
+  
+  tasks:
+    - name: Check and install docker
+      package:
+        name: docker.io
+        state: present
+    
+    - name: Check and install pip
+      package:
+        name: python3-pip
+        state: present
+    
+    - name: Install python docker module
+      command: pip install docker
+
+    - name: Create a data container
+      docker_container:
+        name: "{{ name }}"
+        image: "{{ image }}"
+        state: started
+        auto_remove: True
+        container_default_behavior: no_defaults
+        ports:
+          - "80:80"
+          - "5217:5217"
+...

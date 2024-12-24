@@ -1,0 +1,52 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./k8s/*
+build:
+  local:
+    concurrency: 2
+    useDockerCLI: true
+    push: true
+  artifacts:
+    - image: shalini0408/auth-service
+      context: auth-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/*"
+    - image: shalini0408/image-service
+      context: image-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/*"
+    - image: shalini0408/system-service
+      context: system-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/*"
+    - image: shalini0408/ansible-service
+      context: ansible-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/*"
+    - image: shalini0408/client-service
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.jsx"

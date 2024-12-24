@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url("https://unicons.iconscout.com/release/v4.0.0/css/line.css");
+
+* {
+  font-family: "Poppins", serif !important;
+}
+
+.info__icon {
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+}
+
+.add__icon {
+  font-size: 1.4rem;
+  float: right;
+  color: green;
+}
+
+.remove__icon {
+  font-size: 1.4rem;
+  float: right;
+  color: red;
+}
+
+.add_remove {
+  position: absolute;
+  right: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .toolbar-open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toolbar-close {
+    display: none;
+  }
+
+  .navbox {
+    flex-direction: column;
+  }
+
+  .navlink {
+    margin-bottom: 1rem !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menuicon {
+    display: none;
+  }
+}

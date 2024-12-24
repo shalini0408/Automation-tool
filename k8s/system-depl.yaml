@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: system-manager-depl
+spec:
+  selector:
+    matchLabels:
+      app: system-manager
+  template:
+    metadata:
+      labels:
+        app: system-manager
+    spec:
+      containers:
+        - name: system-manager
+          image: afif1400/system-service
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1024Mi
+            limits:
+              memory: "3072Mi"
+              cpu: "1000m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: system-manager-srv
+spec:
+  selector:
+    app: system-manager
+  ports:
+    - name: system-manager
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

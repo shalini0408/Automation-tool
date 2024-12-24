@@ -1,0 +1,8 @@
+---
+-
+  hosts: current
+  tasks:
+    - name: Health Check
+      ping:
+    
+...
